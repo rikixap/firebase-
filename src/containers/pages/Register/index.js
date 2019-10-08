@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import './Register.scss';
-import firebase from '../../../config/firebase';
+// import firebase from '../../../config/firebase';
 import Button from '../../../components/atoms/Button';
 import { registerUserAPI } from '../../../config/redux/action';
 // import { connect } from 'react-redux';

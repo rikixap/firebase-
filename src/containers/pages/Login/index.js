@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import { connect } from 'react-redux';
 import Button from '../../../components/atoms/Button';
-import { actionUserName } from '../../../config/redux/action';
 import { loginUserAPI } from '../../../config/redux/action';
 
 class Login extends Component {
@@ -22,6 +21,8 @@ class Login extends Component {
         const {history} = this.props;
         const res = await this.props.loginAPI({email,password}).catch (err => err); 
         if(res){
+            console.log('login succes',res);
+        localStorage.setItem('userData',JSON.stringify(res))
         this.setState({
             email: '',
             password: ''
@@ -30,11 +31,11 @@ class Login extends Component {
     }else {
         console.log('login failed')
     }  
-  }      
+}      
 
     render(){
         return(
-          <div className="auth-container">
+        <div className="auth-container">
                 <div className="auth-card">
                     <p className="auth-title">Login Page</p>
                 <input className="input" id="email" placeholder="Email" type="text" onChange={this.handleChangeText} value={this.state.email}/>
